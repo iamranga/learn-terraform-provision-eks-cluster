@@ -19,7 +19,7 @@ resource "random_string" "suffix" {
 }
 
 module "vpc" {
-  source  = "git@github.com:terraform-aws-modules/terraform-aws-vpc.git"
+  source  = "terraform-aws-modules/vpc/aws"
   version = "3.19.0"
 
   name = "education-vpc"
@@ -46,7 +46,7 @@ module "vpc" {
 }
 
 module "eks" {
-  source  = "git@github.com:terraform-aws-modules/terraform-aws-eks.git"
+  source  = "terraform-aws-modules/eks/aws"
   version = "19.5.1"
 
   cluster_name    = local.cluster_name
@@ -91,7 +91,7 @@ data "aws_iam_policy" "ebs_csi_policy" {
 }
 
 module "irsa-ebs-csi" {
-  source  = "git@github.com:terraform-aws-modules/terraform-aws-iam.git"
+  source  = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
   version = "4.7.0"
 
   create_role                   = true
