@@ -46,7 +46,7 @@ module "vpc" {
 }
 
 module "eks" {
-  source  = "terraform-aws-modules/eks/aws"
+  source  = "https://github.com/terraform-aws-modules/terraform-aws-eks.git"
   version = "19.5.1"
 
   cluster_name    = local.cluster_name
